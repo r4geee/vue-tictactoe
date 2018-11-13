@@ -29,8 +29,15 @@ function checkHorz(matrix) {
 
 function checkDiag(matrix) {
   const leftTopToRightBot = _.range(matrix.length).map(i => matrix[i][i]);
+  if (allEqual(leftTopToRightBot)) {
+    return leftTopToRightBot[0];
+  }
+
   const rightTopToLeftBot = _.range(matrix.length).map(i => matrix[matrix.length - 1 - i][i]);
-  return allEqual(leftTopToRightBot) || allEqual(rightTopToLeftBot) || null;
+  if (allEqual(rightTopToLeftBot)) {
+    return rightTopToLeftBot[0];
+  }
+  return null;
 }
 
 export default function (matrix) {

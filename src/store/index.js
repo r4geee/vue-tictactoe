@@ -93,7 +93,7 @@ const getters = {
   },
   winner(state) {
     return state.won;
-  }
+  },
 };
 
 export default new Vuex.Store({
