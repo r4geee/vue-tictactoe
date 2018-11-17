@@ -22,6 +22,9 @@ export default {
     turn() {
       return this.$store.getters.turn;
     },
+    size() {
+      return this.$store.getters.size;
+    },
     value() {
       return this.matrix[this.x][this.y];
     },

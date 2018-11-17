@@ -1,5 +1,4 @@
-export const UPDATE_WIDTH = 'updateWidth';
-export const UPDATE_HEIGHT = 'updateHeight';
+export const UPDATE_SIZE = 'updateSize';
 export const SET_WINNER = 'setWinner';
 export const SET_TURN = 'setTurn';
 export const TOGGLE_TURN = 'toggleTurn';

@@ -2,26 +2,27 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import {
   CHECK_MATRIX,
-  RESET, SET_TURN, SET_WINNER, TOGGLE_TURN, UPDATE_HEIGHT, UPDATE_MATRIX, UPDATE_WIDTH,
+  RESET,
+  SET_TURN,
+  SET_WINNER,
+  TOGGLE_TURN,
+  UPDATE_SIZE,
+  UPDATE_MATRIX,
 } from './actions.type';
 import checkMatrix from '../utils/matrix';
 
 Vue.use(Vuex);
 
 const state = {
-  width: 3,
-  height: 3,
+  size: 3,
   turn: 1,
   won: null,
   matrix: null,
 };
 
 const mutations = {
-  setWidth(state, width) {
-    state.width = width;
-  },
-  setHeight(state, height) {
-    state.height = height;
+  setSize(state, size) {
+    state.size = +size;
   },
   setTurn(state, turn) {
     state.turn = turn;
@@ -30,9 +31,9 @@ const mutations = {
     state.won = player;
   },
   createMatrix(state) {
-    state.matrix = Array(state.width)
+    state.matrix = Array(state.size)
       .fill(null)
-      .map(() => Array(state.height)
+      .map(() => Array(state.size)
         .fill(null));
   },
   updateMatrix(state, { x, y, value }) {
@@ -41,12 +42,8 @@ const mutations = {
 };
 
 const actions = {
-  [UPDATE_WIDTH]({ commit, dispatch }, width) {
-    commit('setWidth', width);
-    dispatch(RESET);
-  },
-  [UPDATE_HEIGHT]({ commit, dispatch }, height) {
-    commit('setHeight', height);
+  [UPDATE_SIZE]({ commit, dispatch }, size) {
+    commit('setSize', +size);
     dispatch(RESET);
   },
   [SET_WINNER]({ commit }, player) {
@@ -82,11 +79,8 @@ const getters = {
   matrix(state) {
     return state.matrix;
   },
-  width(state) {
-    return state.width;
-  },
-  height(state) {
-    return state.height;
+  size(state) {
+    return state.size;
   },
   turn(state) {
     return state.turn;
